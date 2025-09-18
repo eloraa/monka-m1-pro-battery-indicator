@@ -1,0 +1,236 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+
+IDI_MONKAM1PROBATTERYINDICATOR  ICON                    "assets/icons/large.ico"
+IDI_SMALL                       ICON                    "assets/icons/small.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Font Resources
+//
+
+IDR_INTER_FONT          RCDATA                  "assets/fonts/inter_variable.ttf"
+IDR_GEIST_MONO_FONT     RCDATA                  "assets/fonts/geist_mono_variable.ttf"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// SVG Battery Icon Resources
+//
+
+IDR_BATTERY_CHARGING    RCDATA                  "assets/svgs/battery_icons/battery_icon_charging.svg"
+IDR_BATTERY_CRITICAL    RCDATA                  "assets/svgs/battery_icons/battery_icon_critical.svg"
+IDR_BATTERY_EMPTY       RCDATA                  "assets/svgs/battery_icons/battery_icon_empty.svg"
+IDR_BATTERY_FULL        RCDATA                  "assets/svgs/battery_icons/battery_icon_full.svg"
+IDR_BATTERY_LOW         RCDATA                  "assets/svgs/battery_icons/battery_icon_low.svg"
+IDR_BATTERY_MEDIUM      RCDATA                  "assets/svgs/battery_icons/battery_icon_medium.svg"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// HID USB DLL and Config Resources
+//
+
+IDR_HIDUSB_DLL          RCDATA                  "assets/dll/hidusb.dll"
+IDR_CONFIG_INI          RCDATA                  "Config.ini"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PNG Asset Resources
+//
+
+IDR_MOUSE_M1_PRO                  RCDATA    "assets/pngs/mouse/m1_pro.png"
+IDR_MOUSE_CORNER_CUT_DARK         RCDATA    "assets/pngs/ui/mouse_corner_cut_dark.png"
+IDR_MOUSE_CORNER_CUT_LIGHT        RCDATA    "assets/pngs/ui/mouse_corner_cut_light.png"
+IDR_MOUSE_DARK_SWAP               RCDATA    "assets/pngs/ui/mouse_dark_swap.png"
+IDR_MOUSE_DARK                    RCDATA    "assets/pngs/ui/mouse_dark.png"
+IDR_MOUSE_LIGHT_SWAP              RCDATA    "assets/pngs/ui/mouse_light_swap.png"
+IDR_MOUSE_LIGHT                   RCDATA    "assets/pngs/ui/mouse_light.png"
+IDR_MOUSE_MASK                    RCDATA    "assets/pngs/ui/mouse_mask.png"
+IDR_MOUSE_OFFLINE_DARK            RCDATA    "assets/pngs/ui/mouse_offline_dark.png"
+IDR_MOUSE_OFFLINE_LIGHT           RCDATA    "assets/pngs/ui/mouse_offline_light.png"
+IDR_BATTERY_CRITICAL_DARK         RCDATA    "assets/pngs/ui/status/battery_critical_dark.png"
+IDR_BATTERY_CRITICAL_LIGHT        RCDATA    "assets/pngs/ui/status/battery_critical_light.png"
+IDR_BATTERY_LOW_DARK              RCDATA    "assets/pngs/ui/status/battery_low_dark.png"
+IDR_BATTERY_LOW_LIGHT             RCDATA    "assets/pngs/ui/status/battery_low_light.png"
+IDR_ZAP_DARK                      RCDATA    "assets/pngs/ui/status/zap_dark.png"
+IDR_ZAP_LIGHT                     RCDATA    "assets/pngs/ui/status/zap_light.png"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDC_MONKAM1PROBATTERYINDICATOR MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "E&xit",                       IDM_EXIT
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About ...",                  IDM_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDC_MONKAM1PROBATTERYINDICATOR ACCELERATORS
+BEGIN
+    "?",            IDM_ABOUT,              ASCII,  ALT
+    "/",            IDM_ABOUT,              ASCII,  ALT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 250, 140
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About Monka M1 Pro Battery Indicator"
+FONT 9, "Segoe UI"
+BEGIN
+    ICON            IDI_MONKAM1PROBATTERYINDICATOR,IDC_STATIC,115,15,21,20
+    LTEXT           "Monka M1 Pro Battery Indicator",IDC_ABOUT_TITLE,50,45,150,12,SS_CENTER
+    LTEXT           "Developed by Elora",IDC_ABOUT_DEVELOPER,50,65,150,12,SS_CENTER
+    LTEXT           "https://github.com/eloraa",IDC_ABOUT_GITHUB,50,85,150,12,SS_CENTER | SS_NOTIFY
+    DEFPUSHBUTTON   "OK",IDOK,100,110,50,14,WS_GROUP
+END
+
+IDD_DEVICE_SETTINGS DIALOGEX 0, 0, 280, 220
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Device Settings"
+FONT 9, "Segoe UI"
+BEGIN
+    LTEXT           "Monka M1 Pro",IDC_DEVICE_NAME,20,20,120,16,SS_NOPREFIX
+    LTEXT           "90",IDC_BATTERY_LEVEL,20,45,30,16,SS_NOPREFIX
+    LTEXT           "CHARGING",IDC_CHARGING_STATUS,20,65,60,16,SS_NOPREFIX
+
+    GROUPBOX        "COLORS",IDC_STATIC,20,90,240,60
+    AUTORADIOBUTTON "FLAT",IDC_THEME_FLAT,30,105,40,12,WS_GROUP
+    AUTORADIOBUTTON "COLORED",IDC_THEME_COLORED,80,105,50,12
+
+    AUTORADIOBUTTON "PRIMARY",IDC_COLOR_PRIMARY,30,125,50,12,WS_GROUP
+    AUTORADIOBUTTON "WARNING",IDC_COLOR_WARNING,90,125,50,12
+    AUTORADIOBUTTON "CRITICAL",IDC_COLOR_CRITICAL,150,125,50,12
+
+    AUTOCHECKBOX    "BATTERY NOTIFICATIONS",IDC_BATTERY_NOTIFICATIONS,20,165,120,12
+
+    DEFPUSHBUTTON   "OK",IDC_SETTINGS_OK,170,190,50,14,WS_GROUP
+    PUSHBUTTON      "Cancel",IDC_SETTINGS_CANCEL,225,190,50,14
+END
+
+IDD_COLOR_PICKER DIALOGEX 0, 0, 260, 140
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Choose Color"
+FONT 9, "Segoe UI"
+BEGIN
+    LTEXT           "Color:",IDC_COLOR_NAME_LABEL,20,20,60,16,SS_NOPREFIX
+    CONTROL         "",IDC_COLOR_PREVIEW,"BUTTON",BS_OWNERDRAW | WS_BORDER,90,18,40,20
+    PUSHBUTTON      "Pick Color...",IDC_COLOR_PICKER_BUTTON,140,18,80,20
+
+    PUSHBUTTON      "Use Default",IDC_USE_DEFAULT_BUTTON,20,110,60,20
+    DEFPUSHBUTTON   "OK",IDC_COLOR_OK,130,110,50,20,WS_GROUP
+    PUSHBUTTON      "Cancel",IDC_COLOR_CANCEL,190,110,50,20
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 163
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+1 TEXTINCLUDE
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDC_MONKAM1PROBATTERYINDICATOR   "MONKAM1PROBATTERYINDICATOR"
+    IDS_APP_TITLE               "Monka M1 Pro Battery Indicator"
+END
+
+#endif
+/////////////////////////////////////////////////////////////////////////////
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE resource.
+//
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
