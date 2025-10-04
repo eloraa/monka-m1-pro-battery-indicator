@@ -40,6 +40,9 @@ bool g_notificationsEnabled = true;
 int g_fullChargeCounter = 0;
 bool g_hasNotifiedFullCharge = false;
 bool g_hasNotifiedLowBattery = false;
+bool g_hasNotifiedCriticalBattery = false;
+int g_lowBatteryCounter = 0;
+int g_criticalBatteryCounter = 0;
 int g_lastBatteryLevel = -1;
 bool g_lastChargingState = false;
 bool g_chargingStateInitialized = false;
@@ -746,6 +749,9 @@ void CheckBatteryNotifications() {
     if (g_lastBatteryLevel != -1 && abs(batteryLevel - g_lastBatteryLevel) > 5) {
         if (batteryLevel > g_lastBatteryLevel + 5) {
             g_hasNotifiedLowBattery = false;
+            g_hasNotifiedCriticalBattery = false;
+            g_lowBatteryCounter = 0;
+            g_criticalBatteryCounter = 0;
         }
         if (batteryLevel < g_lastBatteryLevel - 5) {
             g_hasNotifiedFullCharge = false;
@@ -759,6 +765,9 @@ void CheckBatteryNotifications() {
             g_fullChargeCounter = 0;
         } else if (!isCharging && g_lastChargingState) {
             g_hasNotifiedLowBattery = false;
+            g_hasNotifiedCriticalBattery = false;
+            g_lowBatteryCounter = 0;
+            g_criticalBatteryCounter = 0;
         }
     }
 
@@ -768,7 +777,7 @@ void CheckBatteryNotifications() {
 
     if (isCharging && batteryLevel == 100) {
         g_fullChargeCounter++;
-        if (g_fullChargeCounter >= 8 && !g_hasNotifiedFullCharge) {
+        if (g_fullChargeCounter >= 10 && !g_hasNotifiedFullCharge) {
             ShowCustomNotification(L"Battery Full", L"Your Monka M1 Pro is fully charged!", NOTIFICATION_FULL_CHARGE, batteryLevel, isCharging);
             g_hasNotifiedFullCharge = true;
         }
@@ -776,14 +785,29 @@ void CheckBatteryNotifications() {
         g_fullChargeCounter = 0;
     }
 
-    if (!isCharging && !g_hasNotifiedLowBattery) {
+    if (!isCharging) {
         if (batteryLevel <= 10) {
-            ShowCustomNotification(L"Critical Battery", L"Battery is critically low (10%). Please charge your Monka M1 Pro.", NOTIFICATION_CRITICAL_BATTERY, batteryLevel, isCharging);
-            g_hasNotifiedLowBattery = true;
+            g_criticalBatteryCounter++;
+            g_lowBatteryCounter = 0;
+            if (g_criticalBatteryCounter >= 10 && !g_hasNotifiedCriticalBattery) {
+                ShowCustomNotification(L"Critical Battery", L"Battery is critically low (10%). Please charge your Monka M1 Pro.", NOTIFICATION_CRITICAL_BATTERY, batteryLevel, isCharging);
+                g_hasNotifiedCriticalBattery = true;
+                g_hasNotifiedLowBattery = true;
+            }
         } else if (batteryLevel <= 20) {
-            ShowCustomNotification(L"Low Battery", L"Battery is low (20%). Consider charging your Monka M1 Pro.", NOTIFICATION_LOW_BATTERY, batteryLevel, isCharging);
-            g_hasNotifiedLowBattery = true;
+            g_lowBatteryCounter++;
+            g_criticalBatteryCounter = 0;
+            if (g_lowBatteryCounter >= 10 && !g_hasNotifiedLowBattery) {
+                ShowCustomNotification(L"Low Battery", L"Battery is low (20%). Consider charging your Monka M1 Pro.", NOTIFICATION_LOW_BATTERY, batteryLevel, isCharging);
+                g_hasNotifiedLowBattery = true;
+            }
+        } else {
+            g_lowBatteryCounter = 0;
+            g_criticalBatteryCounter = 0;
         }
+    } else {
+        g_lowBatteryCounter = 0;
+        g_criticalBatteryCounter = 0;
     }
 }
 
